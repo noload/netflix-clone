@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Header } from "./Header";
+import { checkValidate } from "../utils/validation";
 const Login = () => {
   const [isSign, setIsSign] = useState(true);
-
+  const [errorMsg, setErrorMsg] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
   useEffect(() => {
     const toggleForm = () => {
       setIsSign(!setIsSign);
     };
   }, [isSign]);
+
+  const handleButtonClick = () => {
+    //validation
+    const msg = checkValidate(email.current.value, password.current.value);
+    setErrorMsg(msg);
+  };
+
   return (
     <div>
       <Header />
@@ -17,7 +27,10 @@ const Login = () => {
           src="https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg"
         />
       </div>
-      <form className="absolute text-white p-12 bg-black w-4/12 top-16 m-auto left-0 right-0  rounded-lg bg-opacity-80">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="absolute text-white p-12 h-auto bg-black w-4/12  m-auto top-12 left-0 right-0  rounded-lg bg-opacity-80"
+      >
         <h1 className="font-bold text-3xl py-4">
           {isSign ? "Sign In" : "Sign Up"}
         </h1>
@@ -34,17 +47,25 @@ const Login = () => {
         )}
 
         <input
+          ref={email}
           type="text"
           placeholder="Email Address..."
           className="p-4 my-4 w-full bg-gray-700"
         />
 
         <input
+          ref={password}
           type="password"
           placeholder="Password "
           className="p-4 my-4 w-full bg-gray-700"
         />
-        <button className="p-4 my-6 w-full bg-red-700 rounded-lg">
+        <p className="text-red-600 font-bold transition-all ease-in-out duration-200 ">
+          {errorMsg}
+        </p>
+        <button
+          className="p-4 my-6 w-full bg-red-700 rounded-lg"
+          onClick={() => handleButtonClick()}
+        >
           {isSign ? "Sign In" : "Sign Up"}
         </button>
         <p>
