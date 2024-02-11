@@ -4,6 +4,7 @@ import { checkValidate } from "../utils/validation";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/Firebase";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
   useEffect(() => {
     const toggleForm = () => {
       setIsSign(!setIsSign);
@@ -34,8 +36,21 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL:
+              "https://avatars.githubusercontent.com/u/116295222?s=400&u=bdf6c734c6240fd11b5c752f5abd5973952dda26&v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMsg(error.message);
+            });
 
           // ...
         })
@@ -88,6 +103,7 @@ const Login = () => {
         {!isSign ? (
           <>
             <input
+              ref={name}
               type="text"
               placeholder="Full Name..."
               className="p-4 my-4 w-full bg-gray-700"
