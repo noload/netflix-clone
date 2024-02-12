@@ -4,11 +4,11 @@ import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.NowPlayingMovies);
-
+  console.log(movies);
   if (!movies) return;
-
   const random = Math.floor(Math.random() * 20);
   const mainMovie = movies[random];
+
   return (
     <div>
       <VideoTitle {...mainMovie} />
