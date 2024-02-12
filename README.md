@@ -21,6 +21,10 @@
 - Updated store with movies data
 - Fetch data for trailer Video
 - emabeded the youtube video make it mute and autoplay
+- Build Secondary Container
+  - MovieList Component
+    - MovieCard component
+- Build custom hooks to fetch data for top-rated , upcoming , popular , tranding movies from TMDB
 
 # Features
 

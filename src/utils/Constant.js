@@ -1,6 +1,12 @@
 export const now_paying_url =
   "https://api.themoviedb.org/3/movie/now_playing?page=1";
 
+export const popular_url = "https://api.themoviedb.org/3/movie/popular?page=1";
+export const top_rated_url =
+  "https://api.themoviedb.org/3/movie/top_rated?page=1";
+export const upcoming_url =
+  "https://api.themoviedb.org/3/movie/upcoming?page=1";
+
 export const API_options = {
   method: "GET",
   headers: {
