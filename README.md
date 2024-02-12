@@ -16,6 +16,11 @@
 - BugFix : Sign u user display Name and profile picture update
 - BugFix : if the user logged in Redirect / browse to login page and vice-versa
 - Unsubscribed to the onAuthStateChange callback
+- Get Data from TMDB API
+- Custom hooks for nowplayingmovies and trailerVideo
+- Updated store with movies data
+- Fetch data for trailer Video
+- emabeded the youtube video make it mute and autoplay
 
 # Features
 
