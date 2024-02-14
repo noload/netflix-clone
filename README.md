@@ -27,7 +27,7 @@
 - Build custom hooks to fetch data for top-rated , upcoming , popular , tranding movies from TMDB
 - Build GPT Search page added gpt search bar
 - (\*) Multi-language feature in our app
-- Integrate GPT api's
+- Build search feature user able to search any movies
 
 # Features
 

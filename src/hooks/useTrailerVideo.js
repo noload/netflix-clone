@@ -1,4 +1,4 @@
-import { addTrailerVideo } from "../store/reducers/movieSlice";
+import { addAllVideo, addTrailerVideo } from "../store/reducers/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { API_options } from "../utils/Constant";
 import { useEffect } from "react";
@@ -11,6 +11,10 @@ const useTrailerVideo = (movieId) => {
       API_options
     );
     const json = await data.json();
+
+    const video = json.results.filter((video) => video.site == "YouTube");
+    dispatch(addAllVideo(video));
+
     const trailer = json.results.filter((video) => video.type == "Trailer")[0];
     const newTrailer = trailer ? trailer : json.results[0];
     dispatch(addTrailerVideo(newTrailer));

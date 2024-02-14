@@ -1,5 +1,7 @@
 export const now_paying_url =
   "https://api.themoviedb.org/3/movie/now_playing?page=1";
+export const search_url =
+  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
 
 export const popular_url = "https://api.themoviedb.org/3/movie/popular?page=1";
 export const top_rated_url =
@@ -20,3 +22,5 @@ export const imageBaseURL = `https://image.tmdb.org/t/p/w300/`;
 
 export const bg_img =
   "https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg";
+
+export const key = "key";

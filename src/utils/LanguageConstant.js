@@ -1,7 +1,7 @@
 export const supported_language = [
   { identifier: "eng", name: "English" },
   { identifier: "spn", name: "Spanish" },
-  { identifier: "mar", name: "Marathin" },
+  { identifier: "mar", name: "Marathi" },
   { identifier: "chn", name: "Chinese" },
 ];
 

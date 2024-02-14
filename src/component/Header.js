@@ -41,7 +41,6 @@ export const Header = () => {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid, email, displayName, photoURL }));
         // ...
-        navigate("/browse");
       } else {
         // User is signed out
         // ...
