@@ -25,6 +25,9 @@
   - MovieList Component
     - MovieCard component
 - Build custom hooks to fetch data for top-rated , upcoming , popular , tranding movies from TMDB
+- Build GPT Search page added gpt search bar
+- (\*) Multi-language feature in our app
+- Integrate GPT api's
 
 # Features
 

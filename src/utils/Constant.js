@@ -17,3 +17,6 @@ export const API_options = {
 };
 
 export const imageBaseURL = `https://image.tmdb.org/t/p/w300/`;
+
+export const bg_img =
+  "https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg";

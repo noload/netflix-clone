@@ -5,10 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser, removeUser } from "../store/reducers/userSlice";
+import { toggleGPTSearch } from "../store/reducers/gptSlice";
+import { supported_language } from "../utils/LanguageConstant";
+import { changeLanguage } from "../store/reducers/configSlice";
 export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showSelector = useSelector((store) => store.gpt.showGptSearch);
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -20,6 +25,14 @@ export const Header = () => {
       });
   };
 
+  const handleGPTSearch = () => {
+    //toggle GPT Search
+    dispatch(toggleGPTSearch());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -47,6 +60,30 @@ export const Header = () => {
 
       {user && (
         <div className="flex p-2 items-center gap-2">
+          {showSelector && (
+            <select
+              onChange={(e) => {
+                handleLanguageChange(e);
+              }}
+              className="p-2 bg-gray-900 text-white m-2"
+            >
+              {supported_language.map((lang) => {
+                return (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+          <button
+            onClick={() => {
+              handleGPTSearch();
+            }}
+            className="p-2 m-2 px-4 rounded bg-purple-500 text-white"
+          >
+            {showSelector ? "homepage" : "GPT Search"}
+          </button>
           <img
             className="w-10 h-10 rounded-full"
             src={

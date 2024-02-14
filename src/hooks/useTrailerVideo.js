@@ -10,9 +10,7 @@ const useTrailerVideo = (movieId) => {
       `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
       API_options
     );
-    console.log("vaibhav");
     const json = await data.json();
-    console.log(json.results);
     const trailer = json.results.filter((video) => video.type == "Trailer")[0];
     const newTrailer = trailer ? trailer : json.results[0];
     dispatch(addTrailerVideo(newTrailer));

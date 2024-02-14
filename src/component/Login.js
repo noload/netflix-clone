@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/Firebase";
 import { useNavigate } from "react-router-dom";
+import { bg_img } from "../utils/Constant";
 const Login = () => {
   const navigate = useNavigate();
   const [isSign, setIsSign] = useState(true);
@@ -86,10 +87,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          className="w-screen h-screen"
-          src="https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg"
-        />
+        <img className="w-screen h-screen" src={bg_img} />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
